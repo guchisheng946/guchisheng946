@@ -1,0 +1,23 @@
+void RecycleBin::Load(BindCallbackR1<Status>* done)
+{
+    ......
+    FOREACH(iter, fileStats)
+    {
+        RecycleFile item;
+        Status status = ParseDeletedFileName(iter->path, &item.timestamp);
+        if (!status.IsOk() { ...... }
+        item.fileName = iter->path;
+        item.size = iter->size;
+        item.physicalSize = iter->refCount > 1 ? 0 : iter->physicalSize;
+        ......
+        // 这是修改前的代码
+         earliestTimestamp[item.medium] =
+             item.timestamp != 0 && item.timestamp < earliestTimestamp[item.medium] ?
+             item.timestamp : earliestTimestamp[item.medium];
+         }
+        // 这是修改后的代码
+        if (item.timestamp != 0 &&
+            item.timestamp < earliestTimestamp[item.medium])
+        {
+            earliestTimestamp[item.medium] = item.timestamp;
+        }
