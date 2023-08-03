@@ -1,0 +1,18 @@
+function splode(x,y,z){
+	
+	t=5+parseInt(Math.random()*150);
+	sparkV=1+Math.random()*2.5;
+	type=parseInt(Math.random()*3);
+	switch(type){
+		case 0:
+			pic1=parseInt(Math.random()*10);
+			break;
+		case 1:
+			pic1=parseInt(Math.random()*10);
+			do{ pic2=parseInt(Math.random()*10); }while(pic2==pic1);
+			break;
+		case 2:
+			pic1=parseInt(Math.random()*10);
+			do{ pic2=parseInt(Math.random()*10); }while(pic2==pic1);
+			do{ pic3=parseInt(Math.random()*10); }while(pic3==pic1 || pic3==pic2);
+			break
