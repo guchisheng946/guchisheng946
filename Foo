@@ -1,0 +1,4 @@
+id Foo(RpcController* ctrl,
+         const FooRequest* request,
+         FooResponse* response,
+         Closure* _done)
