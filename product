@@ -1,0 +1,10 @@
+  addProduct( ri_product, 2004, "hammer", "23.99" );
+        addProduct( ri_product, 2005, "vice", "39.99" );
+        ri_product.close();
+
+        PreparedStatement ri_invoice = conn.prepareStatement(
+            "INSERT INTO Invoice( inv_no, name, \"date\" )"
+            + " VALUES( :inv_no, :name, :inv_date )"
+        );
+        ORDINAL_INVOICE_INV_NO = ri_invoice.getOrdinal( "inv_no" );
+        ORDINAL_INVOICE_NAME = ri_invoice.getOrdinal( "name" );
